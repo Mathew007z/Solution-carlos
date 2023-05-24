@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import TodoItem from './components/TodoItem/TodoItem' 
+import TodoCounter from './components/TodoItem/TodoItem' 
+import TodoList from './components/TodoItem/TodoItem' 
+import CreateTodoButton from './components/TodoItem/TodoItem' 
+import TodoSearch from './components/TodoItem/TodoItem' 
 
-function App() {
+
+
+
+
+const defaultTodos = [
+  { text: "Escribe una tarea1", completed: true },
+  { text: "Escribe una tarea2", completed: false },
+  { text: "Escribe una tarea3", completed: true },
+];
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <TodoCounter completed={16} total={25} />
+      <TodoSearch />
+      <TodoList>
+        {defaultTodos.map((item) => (
+          <TodoItem
+            key={item.text}
+            text={item.text}
+            completed={item.completed}
+          />
+        ))}
+      </TodoList>
+
+      <CreateTodoButton />
+    </>
   );
-}
+};
 
 export default App;
